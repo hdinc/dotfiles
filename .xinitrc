@@ -9,6 +9,5 @@ export PATH="$PATH:$HOME/.local/bin/"
 #some programs doesnt open without this.
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-setxkbmap -option caps:super
-
+setxkbmap -option 'caps:super' && xcape -e 'Super_L=Escape' &
 exec bspwm

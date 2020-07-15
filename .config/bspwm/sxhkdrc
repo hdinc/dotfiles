@@ -1,10 +1,19 @@
+XF86Audio{Raise,Lower}Volume
+	amixer set 'Master' 5%{+,-}
+
+XF86MonBrightness{Up,Down}
+	xbacklight -{inc,dec} 10
+
+super + b
+	~/.config/bspwm/scripts/polybar_toggle
+
 super + Return
 	st -e fish
 
 super + d
 	rofi -show run
 
-super + shift + escape
+super + shift + Escape
 	bspc quit
 
 super + q
@@ -28,7 +37,10 @@ super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 super + {j,k}
-	bspc node -f {next,prev}
+	bspc node -f {next,prev}.local
+
+super + {l,h}
+	bspc desktop -f {next,prev}.local
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}

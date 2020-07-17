@@ -1,6 +1,9 @@
 XF86Audio{Raise,Lower}Volume
 	amixer set 'Master' 5%{+,-}
 
+XF86AudioMute
+	amixer set 'Master' toggle
+
 XF86MonBrightness{Up,Down}
 	xbacklight -{inc,dec} 10
 
@@ -40,6 +43,9 @@ super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
 super + {j,k}
+	bspc node -f {next,prev}.local
+
+super + button{5,4}
 	bspc node -f {next,prev}.local
 
 super + {l,h}

@@ -35,14 +35,13 @@ Plug 'junegunn/fzf'
 "Plug 'lervag/vimtex'
 "Plug 'SirVer/ultisnips'
 "plug 'airblade/vim-gitgutter'
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-
-let g:gruvbox_italic=1
-colorscheme gruvbox
+"let g:gruvbox_italic=1
+"colorscheme gruvbox
 
 " FZF config"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }

@@ -11,7 +11,6 @@ set noswapfile
 set hlsearch
 set incsearch
 set iskeyword-=_
-set signcolumn=yes
 set splitbelow splitright
 set mouse=a
 let mapleader =","
@@ -20,6 +19,7 @@ syntax on
 set foldmethod=syntax
 let g:netrw_banner=0
 let g:netrw_liststyle=2
+highlight clear signcolumn
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
@@ -35,13 +35,14 @@ Plug 'junegunn/fzf'
 "Plug 'lervag/vimtex'
 "Plug 'SirVer/ultisnips'
 "plug 'airblade/vim-gitgutter'
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 call plug#end()
 
-"let g:gruvbox_italic=1
-"colorscheme gruvbox
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 " FZF config"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -64,7 +65,7 @@ noremap <silent> <C-Down> :resize -3<CR>
 ""map <Leader>tk <C-w>t<C-w>K
 
 " Removes pipes | that act as seperators on splits
-"set fillchars+=vert:\ 
+"set fillchars+=vert:\
 
 " ----------------coc config-------------"
 " TextEdit might fail if hidden is not set.
@@ -75,7 +76,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -86,12 +87,12 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+"if has("patch-8.1.1564")
+"  " Recently vim can merge signcolumn and number column into one
+"  set signcolumn=number
+"else
+"  set signcolumn=yes
+"endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by

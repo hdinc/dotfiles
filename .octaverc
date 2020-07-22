@@ -1,0 +1,2 @@
+edit mode async
+EDITOR('st -e nvim > /dev/null 2>&1')

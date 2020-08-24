@@ -18,7 +18,7 @@ floating_modifier Mod4
 bindsym Mod4+Return exec st
 bindsym Mod4+Shift+p exec firefox --private-window
 bindsym Mod4+q kill
-bindsym Mod4+d exec dmenu_run
+bindsym Mod4+d exec dmenu_run -i
 bindsym Mod4+p exec mpc toggle
 bindsym Mod4+period exec mpc next
 bindsym Mod4+comma exec mpc prev

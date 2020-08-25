@@ -1,7 +1,7 @@
 #for nvidia driver
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
-xrandr --dpi 96 
+xrandr --dpi 96
 
 # Adds `~/.local/bin` to $PATH
 export PATH="$PATH:$HOME/.local/bin/"

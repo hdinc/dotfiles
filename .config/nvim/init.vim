@@ -21,6 +21,8 @@ let g:netrw_banner=0
 let g:netrw_liststyle=2
 highlight clear signcolumn
 
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
@@ -47,6 +49,7 @@ colorscheme gruvbox
 " FZF config"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <Leader>z :FZF <CR>
+nnoremap <Leader>b :b# <CR>
 
 map <leader>n :NERDTreeToggle<CR>
 

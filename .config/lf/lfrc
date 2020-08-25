@@ -1,0 +1,24 @@
+map gb cd /media/backup/
+map ge cd /media/hard/
+map gd cd /media/dev/
+map gm cd /media
+
+
+# toggle single column view
+cmd no_preview :{{
+    set nopreview
+    set ratios 1
+    set info size:time
+    map ~ yes_preview
+}}
+cmd yes_preview :{{
+    set ratios 1:2:3
+    set preview
+    set info
+    map ~ no_preview
+}}
+map ~ no_preview
+map . set hidden!
+map <delete> delete
+
+map W &(st;cd $(dirname $f))

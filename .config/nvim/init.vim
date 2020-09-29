@@ -41,6 +41,8 @@ Plug 'morhetz/gruvbox'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
+
+Plug 'mboughaba/i3config.vim'
 call plug#end()
 
 let g:gruvbox_italic=1

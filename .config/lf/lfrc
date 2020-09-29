@@ -2,6 +2,7 @@ map gb cd /media/backup/
 map ge cd /media/hard/
 map gd cd /media/dev/
 map gm cd /media
+map g/ cd /
 
 
 # toggle single column view
@@ -22,3 +23,4 @@ map . set hidden!
 map <delete> delete
 
 map W &(st;cd $(dirname $f))
+map Y &(echo $f | xclip -selection c)

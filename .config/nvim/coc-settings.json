@@ -9,5 +9,25 @@
         "rootPatterns": ["*.cabal", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
         "filetypes": ["haskell", "lhaskell"]
       }
-    }
+    },
+
+    "coc.preferences.hoverTarget":"float",
+    "codeLens.enable": true,
+
+    "diagnostic.checkCurrentLine": true,
+    "diagnostic.virtualText": true,
+    "diagnostic.virtualTextCurrentLineOnly": false,
+    "diagnostic.messageTarget": "float",
+    "diagnostic.enableSign": false,
+
+    "signature.enable": true,
+    "signature.target": "float",
+
+    "suggest.floatEnable": false,
+    "suggest.detailMaxLength": 20,
+    "suggest.labelMaxLength": 60,
+    "suggest.disableMenu": true,
+    "suggest.numberSelect": true,
+    "suggest.autoTrigger": "none"
+
 }

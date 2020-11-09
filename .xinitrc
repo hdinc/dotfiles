@@ -11,4 +11,5 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 setxkbmap -option 'caps:super' && xcape -e 'Super_L=Escape' &
 xset r rate 300 30
+xcompmgr &
 exec i3

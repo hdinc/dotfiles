@@ -2,9 +2,12 @@ font pango:Terminus 10
 
 exec xwallpaper --zoom ~/.config/wall
 
+gaps inner 10
 focus_follows_mouse no
 set $mod Mod4
 floating_modifier $mod
+
+for_window [class="Steam"] floating enable
 
 bindsym XF86AudioRaiseVolume exec amixer set 'Master' 5%+
 bindsym XF86AudioLowerVolume exec amixer set 'Master' 5%-
@@ -13,9 +16,10 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 bindsym $mod+Return exec st
-bindsym $mod+Shift+p exec firefox --private-window
+bindsym $mod+Shift+p exec firefox
+bindsym $mod+n exec st -e nvim ~/vimwiki/index.wiki
 bindsym $mod+q kill
-bindsym $mod+d exec dmenu_run -i
+bindsym $mod+d exec --no-startup-id dmenu_run -i
 
 bindsym $mod+p exec mpc toggle
 bindsym $mod+period exec mpc next
@@ -100,7 +104,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec i3-msg exit
 
 mode "resize" {
         bindsym h       resize shrink width 10 px or 10 ppt

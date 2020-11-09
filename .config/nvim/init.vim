@@ -8,52 +8,57 @@ set hidden
 set nobackup
 set nowritebackup
 set noswapfile
-set hlsearch
 set incsearch
 set iskeyword-=_
 set splitbelow splitright
 set mouse=a
-let mapleader =","
+set sj=-50
+set foldmethod=syntax
+set noshowmode
+set nohlsearch
+set pumheight=10
+
 filetype plugin on
 syntax on
-set foldmethod=syntax
+
+let mapleader =","
 let g:netrw_banner=0
 let g:netrw_liststyle=2
+
 highlight clear signcolumn
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/fzf'
 Plug 'jreybert/vimagit'
 Plug 'vimwiki/vimwiki'
-Plug 'bling/vim-airline'
-Plug 'tpope/vim-commentary'
-Plug 'kovetskiy/sxhkd-vim'
-Plug 'junegunn/fzf'
-"Plug 'junegunn/fzf.vim
-"Plug 'lervag/vimtex'
-"Plug 'SirVer/ultisnips'
-"plug 'airblade/vim-gitgutter'
-Plug 'morhetz/gruvbox'
+Plug 'itchyny/lightline.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-
-Plug 'mboughaba/i3config.vim'
+" Plug 'lervag/vimtex'
+" Plug 'SirVer/ultisnips'
 call plug#end()
 
-let g:gruvbox_italic=1
-colorscheme gruvbox
+" let g:tex_flavor = 'latex'
+
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ }
+
+colorscheme onedark
+set termguicolors
 
 " FZF config"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <Leader>z :FZF <CR>
-nnoremap <Leader>b :b# <CR>
 
-map <leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>b :b# <CR>
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -66,11 +71,11 @@ noremap <silent> <C-Up> :resize +3<CR>
 noremap <silent> <C-Down> :resize -3<CR>
 
 """ Change 2 split windows from vert to horiz or horiz to vert
-""map <Leader>th <C-w>t<C-w>H
-""map <Leader>tk <C-w>t<C-w>K
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
 
 " Removes pipes | that act as seperators on splits
-"set fillchars+=vert:\
+" set fillchars+=vert:\ 
 
 " ----------------coc config-------------"
 " TextEdit might fail if hidden is not set.

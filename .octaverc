@@ -1,2 +1,4 @@
 edit mode async
 EDITOR('st -e nvim > /dev/null 2>&1')
+set(0, "defaulttextfontsize", 24)  % title
+set(0, "defaultaxesfontsize", 16)  % axes labels

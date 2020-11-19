@@ -4,3 +4,7 @@ Xft.rgba: rgb
 Xft.autohint: false
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
+
+Sxiv.font: Terminus:size=12
+Sxiv.background: #ffffff
+Sxiv.foreground: #4e4e4e

@@ -17,6 +17,7 @@ set foldmethod=syntax
 set noshowmode
 set nohlsearch
 set pumheight=10
+set title
 
 filetype plugin on
 syntax on
@@ -41,7 +42,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
-" Plug 'lervag/vimtex'
+Plug 'lervag/vimtex'
 " Plug 'SirVer/ultisnips'
 call plug#end()
 

@@ -12,8 +12,12 @@ export OPENER='mimeopen'
 
 export ANDROID_HOME=$HOME/.local/Android
 export MPD_HOST=$HOME/.config/mpd/mpd.socket
+
 export FZF_DEFAULT_COMMAND='fd --type f --follow'
 export FZF_DEFAULT_OPTS='--color bw'
+
+export NNN_BMS='d:/media/dev/;e:/media/hard/;D:~/Downloads/'
+export NNN_PLUG='o:fzopen'
 
 export PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 

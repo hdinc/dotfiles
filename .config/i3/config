@@ -1,6 +1,10 @@
-font pango:Terminus 10
+font pango:Fira Code 12
 
 exec xwallpaper --zoom ~/.config/wall
+
+exec playerctld &
+exec mpDris2 &
+set $playerctl playerctl -p playerctld
 
 gaps inner 10
 focus_follows_mouse no
@@ -16,16 +20,16 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 bindsym $mod+Return exec st
-bindsym $mod+Shift+p exec firefox
+bindsym $mod+Shift+p exec firefox --private-window
 bindsym $mod+n exec st -e nvim ~/vimwiki/index.wiki
 bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run -i
 
-bindsym $mod+p exec mpc toggle
-bindsym $mod+period exec mpc next
-bindsym $mod+comma exec mpc prev
-bindsym $mod+Shift+period exec mpc seek +10
-bindsym $mod+Shift+comma exec mpc seek -10
+bindsym $mod+p exec $playerctl play-pause
+bindsym $mod+period exec $playerctl next
+bindsym $mod+comma exec $playerctl previous
+bindsym $mod+Shift+period exec $playerctl position 10+
+bindsym $mod+Shift+comma exec $playerctl position 10-
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -68,6 +72,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+g workspace prev
+bindsym $mod+semicolon workspace next
 
 set $ws1 "1"
 set $ws2 "2"
@@ -104,7 +110,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
         bindsym h       resize shrink width 10 px or 10 ppt

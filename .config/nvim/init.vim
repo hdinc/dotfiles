@@ -31,6 +31,7 @@ highlight clear signcolumn
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 call plug#begin('~/.config/nvim/plugged')
+Plug 'preservim/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
@@ -45,6 +46,9 @@ Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'lervag/vimtex'
 " Plug 'SirVer/ultisnips'
 call plug#end()
+
+
+noremap <silent> <leader>n :NERDTreeToggle<cr>
 
 " let g:tex_flavor = 'latex'
 
@@ -65,11 +69,33 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+nmap <A-1> 1gt
+nmap <A-2> 2gt
+nmap <A-3> 3gt
+nmap <A-4> 4gt
+nmap <A-5> 5gt
+nmap <A-w> gT
+nmap <A-e> gt
 
 noremap <silent> <C-Left> :vertical resize +3<CR>
 noremap <silent> <C-Right> :vertical resize -3<CR>
 noremap <silent> <C-Up> :resize +3<CR>
 noremap <silent> <C-Down> :resize -3<CR>
+
+" insert mode emacs shortcuts
+inoremap <C-A> <Home>
+inoremap <C-B> <Left>
+inoremap <C-E> <End>
+inoremap <C-F> <Right>
+inoremap <A-b> <C-Left>
+inoremap <A-f> <C-Right>
+inoremap <C-K> <Esc>lC
+inoremap <C-U> <Esc>d0xi
+inoremap <C-Y> <Esc>pa
+inoremap <C-d> <Delete>
+inoremap <A-x> <Esc>:
+" inoremap <A-f> <Esc>lwi
+" inoremap <A-b> <Esc>bi
 
 """ Change 2 split windows from vert to horiz or horiz to vert
 map <Leader>th <C-w>t<C-w>H

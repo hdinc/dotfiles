@@ -101,6 +101,9 @@ inoremap <A-x> <Esc>:
 map <Leader>th <C-w>t<C-w>H
 map <Leader>tk <C-w>t<C-w>K
 
+" Search selected text in visual mode
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 " Removes pipes | that act as seperators on splits
 " set fillchars+=vert:\ 
 

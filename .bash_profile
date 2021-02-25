@@ -6,7 +6,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Software/local/lib/:$HOME/Software
 
 export EDITOR='nvim'
 export TERMINAL='st'
-export BROWSER='firefox'
+export BROWSER='Chromium'
 export READER='zathura'
 export OPENER='mimeopen'
 
@@ -20,6 +20,7 @@ export NNN_BMS='d:/media/dev/;e:/media/hard/;D:~/Downloads/'
 export NNN_PLUG='o:fzopen'
 
 export PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
+export HISTFILESIZE=10000
 
 source ~/.local/less_colors.sh
 [ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 

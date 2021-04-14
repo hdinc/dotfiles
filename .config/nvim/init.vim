@@ -1,6 +1,6 @@
 set ignorecase
 set smartcase
-set number relativenumber
+"set number relativenumber
 set expandtab
 set tabstop=4
 set shiftwidth=4
@@ -18,6 +18,8 @@ set noshowmode
 set nohlsearch
 set pumheight=10
 set title
+set fdls=99
+" set clipboard=unnamedplus
 
 filetype plugin on
 syntax on
@@ -29,14 +31,16 @@ let g:netrw_liststyle=2
 highlight clear signcolumn
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd InsertLeave,TextChanged * set foldmethod=syntax
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'preservim/nerdtree'
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf'
 Plug 'jreybert/vimagit'
+Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
@@ -47,14 +51,34 @@ Plug 'lervag/vimtex'
 " Plug 'SirVer/ultisnips'
 call plug#end()
 
+let g:gitgutter_enabled = 0
 
-noremap <silent> <leader>n :NERDTreeToggle<cr>
+nnoremap <silent> <Leader>g :GitGutterToggle<cr>
+
+noremap <silent> <leader>c :CHADopen<cr>
 
 " let g:tex_flavor = 'latex'
+let g:vimtex_compiler_method='latexmk'
+let g:vimtex_view_general_viewer = 'zathura'
 
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ }
+
+function! CocFuncName()
+    let currentFunctionSymbol = get(b:, 'coc_current_function', '')
+    return currentFunctionSymbol !=# '' ? "" .currentFunctionSymbol : ''
+endfunction
+
+let g:lightline.component_function = {
+            \ 'cocstatus': 'coc#status',
+            \ 'currentFunc': 'CocFuncName'
+            \}
+let g:lightline.active = {
+            \ 'left': [ [ 'mode', 'paste', ],
+            \           [ 'readonly', 'relativepath', 'modified' ],
+            \           [ 'cocstatus', 'currentFunc' ] ],
+            \}
 
 colorscheme onedark
 set termguicolors
@@ -69,6 +93,7 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
 nmap <A-1> 1gt
 nmap <A-2> 2gt
 nmap <A-3> 3gt
@@ -137,16 +162,33 @@ set shortmess+=c
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  \ pumvisible() ? coc#_select_confirm() :
+  \ coc#expandableOrJumpable() ?
+  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+
 
 " Use <c-space> to trigger completion.
 if has('nvim')

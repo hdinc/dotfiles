@@ -1,5 +1,6 @@
 {
     "clangd.semanticHighlighting": true,
+    "clangd.arguments": ["--background-index","-header-insertion=never"],
     "coc.preferences.formatOnSaveFiletypes": ["cpp","c"],
 
     "languageserver": {
@@ -11,23 +12,20 @@
       }
     },
 
-    "coc.preferences.hoverTarget":"float",
     "codeLens.enable": true,
 
-    "diagnostic.checkCurrentLine": true,
     "diagnostic.virtualText": true,
     "diagnostic.virtualTextCurrentLineOnly": false,
-    "diagnostic.messageTarget": "float",
     "diagnostic.enableSign": false,
-
-    "signature.enable": true,
-    "signature.target": "float",
 
     "suggest.floatEnable": false,
     "suggest.detailMaxLength": 20,
     "suggest.labelMaxLength": 60,
     "suggest.disableMenu": true,
-    "suggest.numberSelect": true,
-    "suggest.autoTrigger": "none"
+    "suggest.disableKind": true,
 
+    "list.previewSplitRight": true,
+    "coc.preferences.jumpCommand": "edit",
+
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true
 }

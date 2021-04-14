@@ -1,0 +1,57 @@
+# Global properties
+separator=true
+separator_block_width=15
+
+[mpd]
+command=~/.config/i3blocks/mpd.sh
+interval=persist
+color=#11e412
+
+[disk]
+command=df -h /|tail -1|awk '{print "/:"$4"-"$5}'
+interval=once
+color=#4282a2
+
+[disk2]
+command=df -h /media/hard/ |tail -1|awk '{print "/media/hard:"$4"-"$5}'
+interval=once
+color=#4282a2
+
+# Fetch the public IP address only on startup
+[public-ip]
+command=wget -qO - icanhazip.com
+interval=once
+color=#1253e3
+
+[memory]
+command=free -h | grep Mem | awk '{print $7}'
+interval=3
+color=#aabb55
+
+[cpu_usage2]
+command=~/.config/i3blocks/cpu_usage2/cpu_usage2
+markup=pango
+interval=persist
+#min_width=CPU 100.00%
+#REFRESH_TIME=1
+#LABEL=CPU 
+#WARN_PERCENT=50
+#CRIT_PERCENT=80
+DECIMALS=1
+
+[temperature]
+command=~/.config/i3blocks/temperature/temperature
+interval=10
+#T_WARN=70
+#T_CRIT=90
+SENSOR_CHIP="coretemp-isa-0000"
+
+[battery2]
+command=~/.config/i3blocks/battery2/battery2
+markup=pango
+interval=30
+
+[time]
+command=date '+%R'
+interval=1
+color=#e2ed13

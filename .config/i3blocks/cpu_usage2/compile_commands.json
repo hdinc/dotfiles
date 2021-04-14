@@ -1,0 +1,18 @@
+[
+    {
+        "arguments": [
+            "cc",
+            "-c",
+            "-g",
+            "-Wall",
+            "-Werror",
+            "-O2",
+            "-std=gnu11",
+            "-o",
+            "cpu_usage2",
+            "cpu_usage2.c"
+        ],
+        "directory": "/home/hd/.config/i3blocks/cpu_usage2",
+        "file": "cpu_usage2.c"
+    }
+]

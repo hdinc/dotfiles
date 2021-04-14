@@ -3,7 +3,7 @@ xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 xrandr --dpi 96
 
-#some programs doesnt open without this.
+#some programs wont open without this.
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources

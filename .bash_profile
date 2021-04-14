@@ -27,3 +27,8 @@ source ~/.local/less_colors.sh
     eval $(dircolors -b)
 
 source ~/.bashrc
+
+# autologin on tty1
+# if [ -z "$DISPLAY" ] && [ "$(fgconsole)" -eq 1 ]; then
+# exec startx
+# fi

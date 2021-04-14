@@ -9,9 +9,12 @@ floating_modifier $mod
 
 for_window [class="Steam"] floating enable
 
-bindsym XF86AudioRaiseVolume exec amixer set 'Master' 5%+
-bindsym XF86AudioLowerVolume exec amixer set 'Master' 5%-
-bindsym XF86AudioMute exec amixer set 'Master' toggle
+#use marks
+#systray app
+
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
+bindsym XF86AudioMute exec pamixer -t
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 

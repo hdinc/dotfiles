@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+    exit
+fi
+
+if [ $1 == "powersave" ]; then
+    echo "activating powersave governor"
+    for i in $(seq 0 7); do
+        echo "powersave" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+    done
+    exit
+fi
+
+if [ $1 == "ondemand" ]; then
+    echo "activating ondemand governor"
+    for i in $(seq 0 7); do
+        echo "ondemand" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
+    done
+    exit
+fi
+
+echo "wrong argument"
+exit

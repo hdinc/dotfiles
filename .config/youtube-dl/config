@@ -1,0 +1,18 @@
+# --external-downloader aria2c
+# --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M'
+# --external-downloader-args '-c -j 3 -x 3 -s 3 -k 1M --max-download-limit=1000K'
+--abort-on-error
+#--download-archive "~/Youtube/archive.txt"
+# --restrict-filenames
+#--add-metadata
+#--write-all-thumbnails
+#--audio-format mp3
+#--audio-quality 0
+#--embed-thumbnail
+-w
+-c
+--write-description
+--write-annotations
+-f bestvideo[height<=1080]+bestaudio
+# -o "~/Youtube/%(channel)s/%(playlist)s/%(playlist_index)d-%(title)s.%(ext)s"
+-o "%(title)s.%(ext)s"

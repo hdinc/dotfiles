@@ -51,6 +51,8 @@ Plug 'lervag/vimtex'
 " Plug 'SirVer/ultisnips'
 call plug#end()
 
+autocmd FileType c,cpp setlocal commentstring=//\ %s
+
 let g:gitgutter_enabled = 0
 
 nnoremap <silent> <Leader>g :GitGutterToggle<cr>

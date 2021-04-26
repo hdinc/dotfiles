@@ -9,7 +9,7 @@ floating_modifier $mod
 
 #runs after window created?
 for_window [class="Steam"] floating enable
-for_window [class="ROX-Filer"] floating enable
+for_window [class="Pcmanfm"] floating enable
 for_window [title="^Spotify\ Premium$"] move scratchpad
 
 #use marks

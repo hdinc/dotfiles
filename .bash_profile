@@ -20,7 +20,6 @@ export NNN_BMS='d:/media/dev/;e:/media/hard/;D:~/Downloads/'
 export NNN_PLUG='o:fzopen'
 
 export PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
-export HISTFILESIZE=10000
 
 source ~/.local/less_colors.sh
 [ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 

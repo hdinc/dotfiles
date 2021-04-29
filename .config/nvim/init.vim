@@ -48,6 +48,9 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'lervag/vimtex'
+Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/tagbar'
 " Plug 'SirVer/ultisnips'
 call plug#end()
 
@@ -59,19 +62,19 @@ nnoremap <silent> <Leader>g :GitGutterToggle<cr>
 
 noremap <silent> <leader>c :CHADopen<cr>
 
+noremap <silent> <leader>t :TagbarToggle<cr>
+
 " let g:tex_flavor = 'latex'
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_view_general_viewer = 'zathura'
 
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ }
 
 function! CocFuncName()
     let currentFunctionSymbol = get(b:, 'coc_current_function', '')
     return currentFunctionSymbol !=# '' ? "" .currentFunctionSymbol : ''
 endfunction
 
+let g:lightline ={'colorscheme':'onedark'}
 let g:lightline.component_function = {
             \ 'cocstatus': 'coc#status',
             \ 'currentFunc': 'CocFuncName'

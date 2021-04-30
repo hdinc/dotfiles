@@ -29,10 +29,11 @@ map x delete
 map X trash
 
 
+# todo: write a seperate extract script
 cmd extract ${{
     case "$f" in
-        *.zip) unzip "$f" ;;
-        *.tar.*) tar -xf "$f" ;;
+        *.zip) mkdir "${f%*.zip}";cd "${f%*.zip}";unzip "$f" ;;
+        *.tar.*) mkdir "${f%*.tar.*}";cd "${f%*.tar.*}";tar xf "$f" ;;
         *.rar) unrar x "$f" ;;
         *.7z) 7z x "$f" ;;
     esac

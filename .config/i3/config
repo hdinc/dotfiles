@@ -1,4 +1,4 @@
-font pango:Fira Code 12
+font pango:Terminus 12
 
 exec xwallpaper --zoom ~/.config/wall
 

@@ -52,6 +52,6 @@ markup=pango
 interval=30
 
 [time]
-command=date '+%R'
-interval=1
+command=./time.sh
+interval=persist
 color=#e2ed13

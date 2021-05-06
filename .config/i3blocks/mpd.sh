@@ -1,7 +1,36 @@
 #!/bin/bash
+
 mpc current;
-while true;
+
+printMpd(){
+    while true
+    do
+        mpc current --wait
+        [ $? -eq 0 ] || { echo ""; sleep 10; }
+    done
+}
+
+printMpd &
+
+while read line
 do
-    mpc current --wait;
-    [ $? -eq 0 ] || { echo ""; sleep 10; }
+    case $line in
+        "1")
+            mpc prev > /dev/null
+        ;;
+        "2")
+            mpc toggle > /dev/null
+        ;;
+        "3")
+            mpc next > /dev/null
+        ;;
+        "4")
+            mpc seek +10 > /dev/null
+        ;;
+        "5")
+            mpc seek -10 > /dev/null
+        ;;
+    esac
 done
+
+trap 'kill $(jobs -p)' EXIT

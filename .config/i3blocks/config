@@ -3,7 +3,7 @@ separator=true
 separator_block_width=15
 
 [mpd]
-command=~/.config/i3blocks/mpd.sh
+command=./mpd.sh
 interval=persist
 color=#11e412
 

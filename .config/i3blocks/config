@@ -46,11 +46,6 @@ interval=10
 #T_CRIT=90
 SENSOR_CHIP="coretemp-isa-0000"
 
-[battery2]
-command=~/.config/i3blocks/battery2/battery2
-markup=pango
-interval=30
-
 [time]
 command=./time.sh
 interval=persist

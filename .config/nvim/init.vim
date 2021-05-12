@@ -78,21 +78,25 @@ noremap <silent> <leader>t :TagbarToggle<cr>
 let g:vimtex_compiler_method='latexmk'
 let g:vimtex_view_general_viewer = 'zathura'
 
-
 function! CocFuncName()
     let currentFunctionSymbol = get(b:, 'coc_current_function', '')
     return currentFunctionSymbol !=# '' ? "" .currentFunctionSymbol : ''
 endfunction
 
-let g:lightline ={'colorscheme':'onedark'}
-let g:lightline.component_function = {
-            \ 'cocstatus': 'coc#status',
-            \ 'currentFunc': 'CocFuncName'
-            \}
-let g:lightline.active = {
-            \ 'left': [ [ 'mode', 'paste', ],
+let g:lightline ={
+            \'colorscheme':'onedark',
+            \'component_function': {
+            \   'cocstatus': 'coc#status',
+            \   'currentFunc': 'CocFuncName'
+            \},
+            \'active': {
+            \   'left': [ [ 'mode', 'paste', ],
             \           [ 'readonly', 'relativepath', 'modified' ],
             \           [ 'cocstatus', 'currentFunc' ] ],
+            \},
+            \'tab_component_function': {
+            \   'tabnum': '',
+            \},
             \}
 
 colorscheme onedark

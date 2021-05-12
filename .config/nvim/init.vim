@@ -51,8 +51,18 @@ Plug 'lervag/vimtex'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
+Plug 'bfredl/nvim-ipy'
 " Plug 'SirVer/ultisnips'
 call plug#end()
+
+let g:nvim_ipy_perform_mappings = 0
+
+command RunQtConsole call jobstart("jupyter qtconsole --JupyterWidget.include_other_output=True")
+
+nmap <silent> <leader>jqt :RunQtConsole<Enter>
+nmap <silent> <leader>jk :IPython<Space>--existing<Space>--no-window<Enter>
+nmap <silent> <leader>jc <Plug>(IPy-RunCell)
+nmap <silent> <leader>ja <Plug>(IPy-RunAll)
 
 autocmd FileType c,cpp setlocal commentstring=//\ %s
 

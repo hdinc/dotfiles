@@ -35,7 +35,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd InsertLeave,TextChanged * set foldmethod=syntax
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/goyo.vim'
@@ -69,9 +68,9 @@ autocmd FileType c,cpp setlocal commentstring=//\ %s
 
 let g:gitgutter_enabled = 0
 
-nnoremap <silent> <Leader>g :GitGutterToggle<cr>
+nnoremap <silent> <leader>g :GitGutterToggle<cr>
 
-noremap <silent> <leader>c :CHADopen<cr>
+noremap <silent> <leader>e :CocCommand explorer<CR>
 
 noremap <silent> <leader>t :TagbarToggle<cr>
 

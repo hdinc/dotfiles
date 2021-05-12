@@ -19,6 +19,7 @@ set nohlsearch
 set pumheight=10
 set title
 set fdls=99
+set textwidth=80
 " set clipboard=unnamedplus
 
 filetype plugin on

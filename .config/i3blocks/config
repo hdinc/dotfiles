@@ -17,12 +17,6 @@ command=df -h /media/hard/ |tail -1|awk '{print "/media/hard:"$4"-"$5}'
 interval=once
 color=#4282a2
 
-# Fetch the public IP address only on startup
-[public-ip]
-command=wget -qO - icanhazip.com
-interval=once
-color=#1253e3
-
 [memory]
 command=free -h | grep Mem | awk '{print $7}'
 interval=3

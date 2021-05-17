@@ -72,6 +72,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 bindsym $mod+Shift+space floating toggle
+bindsym button2 floating toggle
 bindsym $mod+space focus mode_toggle
 
 bindsym $mod+Shift+minus move scratchpad

@@ -106,8 +106,6 @@ set termguicolors
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <Leader>z :FZF <CR>
 
-nnoremap <Leader>b :b# <CR>
-
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k

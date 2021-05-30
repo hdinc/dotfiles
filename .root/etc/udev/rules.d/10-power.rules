@@ -1,0 +1,2 @@
+SUBSYSTEM=="power_supply", ACTION=="change", ENV{POWER_SUPPLY_ONLINE}=="0", OPTIONS+="last_rule", RUN+="/usr/local/bin/charge 0"
+SUBSYSTEM=="power_supply", ACTION=="change", ENV{POWER_SUPPLY_ONLINE}=="1", OPTIONS+="last_rule", RUN+="/usr/local/bin/charge 1"

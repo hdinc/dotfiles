@@ -8,7 +8,7 @@ then
     xbacklight -set 100
     export DISPLAY=":0"
     export XAUTHORITY=/home/hd/.Xauthority
-    notify-send "charge plugged"
+    notify-send "AC plugged"
 
 elif test $1 -eq 0
 then
@@ -16,5 +16,5 @@ then
     xbacklight -set 30
     export DISPLAY=":0"
     export XAUTHORITY=/home/hd/.Xauthority
-    notify-send "charge unplugged"
+    notify-send "AC unplugged"
 fi

@@ -1,2 +1,2 @@
-SUBSYSTEM=="power_supply", ACTION=="change", ENV{POWER_SUPPLY_ONLINE}=="0", OPTIONS+="last_rule", RUN+="/usr/local/bin/charge 0"
-SUBSYSTEM=="power_supply", ACTION=="change", ENV{POWER_SUPPLY_ONLINE}=="1", OPTIONS+="last_rule", RUN+="/usr/local/bin/charge 1"
+ACTION=="change", SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{type}=="Mains", ATTR{online}=="0", RUN+="/usr/local/bin/charge 0"
+ACTION=="change", SUBSYSTEM=="power_supply", KERNEL=="AC", ATTR{type}=="Mains", ATTR{online}=="1", RUN+="/usr/local/bin/charge 1"

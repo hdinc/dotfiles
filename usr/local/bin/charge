@@ -1,14 +1,20 @@
 #!/bin/bash
 
+# find a way without user xauthority
+
 if test $1 -eq 1
 then
     cpol ondemand
     xbacklight -set 100
-    DISPLAY=:0 notify-send "charge plugged"
+    export DISPLAY=":0"
+    export XAUTHORITY=/home/hd/.Xauthority
+    notify-send "charge plugged"
 
 elif test $1 -eq 0
 then
     cpol powersave
     xbacklight -set 30
-    DISPLAY=:0 notify-send "charge unplugged"
+    export DISPLAY=":0"
+    export XAUTHORITY=/home/hd/.Xauthority
+    notify-send "charge unplugged"
 fi

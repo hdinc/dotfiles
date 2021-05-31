@@ -1,4 +1,4 @@
-alias config='/usr/bin/git --git-dir=/home/hd/.cfg/ --work-tree=/home/hd'
+alias dot='sudo /usr/bin/git --git-dir=/.dot/ --work-tree=/'
 alias ls='ls --color -F'
 alias ll='ls -lh -F'
 alias l1='ls -1 -F'

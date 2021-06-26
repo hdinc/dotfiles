@@ -21,7 +21,7 @@ bindsym XF86AudioMute exec pamixer -t
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
-bindsym $mod+Return exec st
+bindsym $mod+Return exec kitty
 bindsym $mod+Shift+p exec firefox --private-window
 bindsym $mod+n exec st -e nvim ~/vimwiki/index.wiki
 bindsym $mod+q kill

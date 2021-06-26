@@ -21,7 +21,7 @@ cmd yes_preview :{{
 map ~ no_preview
 map . set hidden!
 
-map W &(st;cd $(dirname $f))
+map W &($TERMINAL;cd $(dirname $f))
 map Y &(echo $f | xclip -selection c)
 
 cmd trash %trash-put $fx

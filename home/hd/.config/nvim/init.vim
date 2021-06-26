@@ -105,6 +105,7 @@ set termguicolors
 " FZF config"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 nnoremap <Leader>z :FZF <CR>
+nnoremap <leader>b :Buffers <CR>
 
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -118,6 +119,12 @@ nmap <A-4> 4gt
 nmap <A-5> 5gt
 nmap <A-w> gT
 nmap <A-e> gt
+" what is the equivalent of <ctrl-o> in terminal mode?
+autocmd BufWinEnter,WinEnter term://* startinsert
+tmap <A-w> <C-\><C-n>gT
+tmap <A-e> <C-\><C-n>gt
+nmap <A-t> :silent !$TERMINAL&<CR>
+
 
 noremap <silent> <C-Left> :vertical resize +3<CR>
 noremap <silent> <C-Right> :vertical resize -3<CR>

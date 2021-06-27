@@ -5,7 +5,7 @@ export PATH=$PATH:$HOME/.local/Android/cmdline-tools/tools/bin/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/Software/local/lib/:$HOME/Software/local/lib64/
 
 export EDITOR='nvim'
-export TERMINAL='kitty'
+export TERMINAL='urxvtc'
 export BROWSER='Chromium'
 export READER='zathura'
 export OPENER='mimeopen'

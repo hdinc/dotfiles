@@ -13,7 +13,7 @@ if [ ! -f "$ifile" ]; then
     printf "$dir\n$ins" > $ifile
 
     mount /media/dev/chroot/ubuntu.img $dir
-     mount -t proc -o ro /proc/ $dir/proc/
+    mount -t proc -o ro /proc/ $dir/proc/
     # TODO: mount readonly
     # mount -o bind,ro /sys $dir/sys/
     # mount -o bind,ro /dev $dir/dev/

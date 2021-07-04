@@ -43,7 +43,7 @@ Plug 'jreybert/vimagit'
 Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
+Plug 'sainnhe/sonokai'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -52,6 +52,8 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'bfredl/nvim-ipy'
+Plug 'antoinemadec/coc-fzf'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'SirVer/ultisnips'
 call plug#end()
 
@@ -84,7 +86,7 @@ function! CocFuncName()
 endfunction
 
 let g:lightline ={
-            \'colorscheme':'onedark',
+            \'colorscheme':'sonokai',
             \'component_function': {
             \   'cocstatus': 'coc#status',
             \   'currentFunc': 'CocFuncName'
@@ -99,8 +101,11 @@ let g:lightline ={
             \},
             \}
 
-colorscheme onedark
+let g:sonokai_enable_italic = 1
 set termguicolors
+colorscheme sonokai
+
+lua require('ts')
 
 " FZF config"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
@@ -111,6 +116,8 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+nmap <A-q> :qa<CR>
 
 nmap <A-1> 1gt
 nmap <A-2> 2gt

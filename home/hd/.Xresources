@@ -12,6 +12,9 @@ Sxiv.foreground: #338833
 URxvt.font: xft:Cascadia Code:size=14
 URxvt.scrollBar: false
 
+URxvt.keysym.S-Return: \033[13;2u
+URxvt.keysym.C-Return: \033[13;5u
+
 *.background: #2C2E34
 *.foreground: #E2E2E3
 

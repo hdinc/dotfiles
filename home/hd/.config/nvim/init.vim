@@ -13,7 +13,7 @@ set iskeyword-=_
 set splitbelow splitright
 set mouse=a
 set sj=-50
-set foldmethod=syntax
+set foldmethod=indent
 set noshowmode
 set nohlsearch
 set pumheight=10
@@ -32,7 +32,7 @@ let g:netrw_liststyle=2
 highlight clear signcolumn
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd InsertLeave,TextChanged * set foldmethod=syntax
+" autocmd InsertLeave,TextChanged * set foldmethod=indent
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-surround'
@@ -61,10 +61,7 @@ let g:nvim_ipy_perform_mappings = 0
 
 command RunQtConsole call jobstart("jupyter qtconsole --JupyterWidget.include_other_output=True")
 
-nmap <silent> <leader>jqt :RunQtConsole<Enter>
-nmap <silent> <leader>jk :IPython<Space>--existing<Space>--no-window<Enter>
-nmap <silent> <leader>jc <Plug>(IPy-RunCell)
-nmap <silent> <leader>ja <Plug>(IPy-RunAll)
+autocmd FileType python nmap <buffer> <S-CR> <Plug>(IPy-RunCell)
 
 autocmd FileType c,cpp setlocal commentstring=//\ %s
 
@@ -101,7 +98,7 @@ let g:lightline ={
             \},
             \}
 
-let g:sonokai_enable_italic = 1
+" let g:sonokai_enable_italic = 1
 set termguicolors
 colorscheme sonokai
 
@@ -194,18 +191,18 @@ set shortmess+=c
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? coc#_select_confirm() :
-  \ coc#expandableOrJumpable() ?
-  \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+" inoremap <silent><expr> <TAB>
+"   \ pumvisible() ? coc#_select_confirm() :
+"   \ coc#expandableOrJumpable() ?
+"   \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"   \ <SID>check_back_space() ? "\<TAB>" :
+"   \ coc#refresh()
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -221,10 +218,10 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" " Make <CR> auto-select the first completion item and notify coc.nvim to
+" " format on enter, <cr> could be remapped by other vim plugin
+" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.

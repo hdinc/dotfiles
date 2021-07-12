@@ -38,3 +38,15 @@ cmd extract ${{
         *.7z) mkdir "${f%*.7z}" && cd "${f%*.7z}" && 7z x "$f" ;;
     esac
 }}
+
+
+cmd fzf_jump ${{
+    res="$(find . | fzf --reverse --header='Jump to location' | sed 's/\\/\\\\/g;s/"/\\"/g')"
+    if [ -d "$res" ]; then
+        cmd="cd"
+    else
+        cmd="select"
+    fi
+    lf -remote "send $id $cmd \"$res\""
+}}
+map <c-f> :fzf_jump

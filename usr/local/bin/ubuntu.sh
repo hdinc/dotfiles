@@ -32,8 +32,12 @@ else
 fi
 
 # TERM=xterm chroot $dir /bin/bash -c "su hd --login"
-TERM=xterm chroot $dir /bin/bash -c "su hd"
-
+if test $# -eq 1
+then
+    chroot $dir /bin/su -w DISPLAY - hd -c "$1"
+else
+    chroot $dir /bin/su -w DISPLAY - hd
+fi
 
 ins=$(tail -n 1 "$ifile")
 if [[ $ins -eq 1 ]]

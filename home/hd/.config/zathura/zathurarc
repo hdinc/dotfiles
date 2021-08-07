@@ -1,6 +1,7 @@
 set window-title-basename "true"
 set selection-clipboard "clipboard"
 set font "Terminus 12"
+set sandbox none
 
 map <C-i> recolor
 

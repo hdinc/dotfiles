@@ -80,8 +80,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+g workspace prev
-bindsym $mod+semicolon workspace next
+bindsym $mod+bracketleft workspace prev
+bindsym $mod+bracketright workspace next
 
 set $ws1 "1"
 set $ws2 "2"

@@ -11,7 +11,7 @@ if [ $# -eq 0 ]
     exit
 fi
 
-if [ $1 == "powersave" ]; then
+if [ $1 == "powersave" -o $1 == "1" ]; then
     echo "activating powersave governor"
     for i in $(seq 0 7); do
         echo "powersave" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor
@@ -19,7 +19,7 @@ if [ $1 == "powersave" ]; then
     exit
 fi
 
-if [ $1 == "ondemand" ]; then
+if [ $1 == "ondemand" -o $1 == "0" ]; then
     echo "activating ondemand governor"
     for i in $(seq 0 7); do
         echo "ondemand" > /sys/devices/system/cpu/cpu$i/cpufreq/scaling_governor

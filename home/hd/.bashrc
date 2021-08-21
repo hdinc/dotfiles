@@ -4,6 +4,7 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias l1='ls -1'
 alias vim='nvim -u NONE -N'
+alias em='emacsclient -t --alternate-editor='''
 
 PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 

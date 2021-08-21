@@ -13,7 +13,7 @@ set iskeyword-=_
 set splitbelow splitright
 set mouse=a
 set sj=-50
-set foldmethod=indent
+set foldmethod=syntax
 set noshowmode
 set nohlsearch
 set pumheight=10
@@ -32,7 +32,8 @@ let g:netrw_liststyle=2
 highlight clear signcolumn
 
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" autocmd InsertLeave,TextChanged * set foldmethod=indent
+autocmd FileType python setlocal foldmethod=indent
+autocmd InsertLeave,TextChanged cpp,c set foldmethod=syntax
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-surround'
@@ -43,7 +44,7 @@ Plug 'jreybert/vimagit'
 Plug 'airblade/vim-gitgutter'
 Plug 'vimwiki/vimwiki'
 Plug 'itchyny/lightline.vim'
-Plug 'sainnhe/sonokai'
+Plug 'joshdick/onedark.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jackguo380/vim-lsp-cxx-highlight'
@@ -53,7 +54,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'bfredl/nvim-ipy'
 Plug 'antoinemadec/coc-fzf'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'SirVer/ultisnips'
 call plug#end()
 
@@ -83,7 +83,7 @@ function! CocFuncName()
 endfunction
 
 let g:lightline ={
-            \'colorscheme':'sonokai',
+            \'colorscheme':'onedark',
             \'component_function': {
             \   'cocstatus': 'coc#status',
             \   'currentFunc': 'CocFuncName'
@@ -98,11 +98,9 @@ let g:lightline ={
             \},
             \}
 
-" let g:sonokai_enable_italic = 1
 set termguicolors
-colorscheme sonokai
-
-lua require('ts')
+let g:onedark_terminal_italics=1
+colorscheme onedark
 
 " FZF config"
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }

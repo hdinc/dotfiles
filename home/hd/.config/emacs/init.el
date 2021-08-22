@@ -25,11 +25,18 @@
   :ensure t
   :config (global-undo-tree-mode))
 
+(use-package general
+  :ensure t
+  :config (general-evil-setup))
+
 (use-package evil
   :ensure t
-  :config (evil-mode 1)
-  :custom
-  (evil-undo-system 'undo-tree))
+  :custom (evil-undo-system 'undo-tree)
+  :config
+  (evil-mode 1)
+  (general-nmap
+    "M-w" 'tab-bar-switch-to-prev-tab
+    "M-e" 'tab-bar-switch-to-next-tab))
 
 (use-package lsp-mode
   :ensure t

@@ -2,7 +2,7 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
 (menu-bar-mode -1)
@@ -12,28 +12,32 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 (setq create-lockfiles nil)
+(setq auto-save-list-file-prefix nil)
+(setq backup-inhibited t)
 
-(defun my-kill-emacs ()
-  "save some buffers, then exit unconditionally"
-  (interactive)
-  (save-some-buffers nil t)
-  (kill-emacs))
-(global-set-key (kbd "C-x C-c") 'my-kill-emacs)
+(add-to-list 'default-frame-alist '(font . "Cascadia Code-12"))
 
-(set-frame-font "Cascadia Code 12" nil t)
-(load-theme 'atom-one-dark t)
+(use-package atom-one-dark-theme
+  :ensure t
+  :config (load-theme 'atom-one-dark t))
 
-(define-minor-mode cmd-mode
-  "normal mode"
-  nil
-  "NORMAL"
-  '(
-    ("j" . next-line)
-    ("k" . previous-line)
-    ("l" . forward-char)
-    ("h" . backward-char)
-  )
-  )
+(use-package undo-tree
+  :ensure t
+  :config (global-undo-tree-mode))
 
-;Changes cursor type to bar
-(setq-default cursor-type 'bar)
+(use-package evil
+  :ensure t
+  :config (evil-mode 1)
+  :custom
+  (evil-undo-system 'undo-tree))
+
+(use-package lsp-mode
+  :ensure t
+  :config
+  (add-hook 'c++-mode-hook 'lsp)
+  (add-hook 'python-mode-hook 'lsp)
+  (setq lsp-clients-clangd-args '("-j=4" "-background-index" "-log=error")))
+
+(use-package company
+  :ensure t
+  :config (global-company-mode))

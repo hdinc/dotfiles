@@ -10,8 +10,16 @@ PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 
 HISTSIZE=100000
 HISTCONTROL=ignoreboth:erasedups
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 shopt -s histappend
+
+removehistorydups() {
+    tmpfile=$(mktemp)
+    tac $HISTFILE | cat -n | sort -uk2 | sort -nk1 | cut -f2- | tac > $tmpfile
+    cat $tmpfile > $HISTFILE
+    rm $tmpfile
+}
+
+# PROMPT_COMMAND="removehistorydups; $PROMPT_COMMAND"
 
 source ~/.local/z.sh
 source ~/.local/nnn_quitcd.sh

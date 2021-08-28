@@ -8,7 +8,10 @@ alias em='emacsclient -t --alternate-editor='''
 
 PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 
-HISTSIZE=10000
+HISTSIZE=100000
+HISTCONTROL=ignoreboth:erasedups
+PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+shopt -s histappend
 
 source ~/.local/z.sh
 source ~/.local/nnn_quitcd.sh

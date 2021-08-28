@@ -12,6 +12,10 @@ Sxiv.foreground: #338833
 URxvt.font: xft:Cascadia Code:size=14
 URxvt.scrollBar: false
 
+URxvt.perl-ext-common: font-size
+URxvt.keysym.S-M-K: perl:font-size:increase
+URxvt.keysym.S-M-J: perl:font-size:decrease
+
 URxvt.keysym.S-Return: \033[13;2u
 URxvt.keysym.C-Return: \033[13;5u
 

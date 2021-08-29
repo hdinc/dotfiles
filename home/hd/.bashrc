@@ -9,17 +9,7 @@ alias em='emacsclient -t --alternate-editor='''
 PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 
 HISTSIZE=100000
-HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
-
-removehistorydups() {
-    tmpfile=$(mktemp)
-    tac $HISTFILE | cat -n | sort -uk2 | sort -nk1 | cut -f2- | tac > $tmpfile
-    cat $tmpfile > $HISTFILE
-    rm $tmpfile
-}
-
-# PROMPT_COMMAND="removehistorydups; $PROMPT_COMMAND"
 
 source ~/.local/z.sh
 source ~/.local/nnn_quitcd.sh

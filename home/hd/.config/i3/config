@@ -1,4 +1,4 @@
-font pango:Terminus 12
+font pango:Terminus 16
 
 exec xwallpaper --zoom ~/.config/wall
 
@@ -22,10 +22,11 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 bindsym $mod+Return exec $TERMINAL
-bindsym $mod+Shift+p exec firefox
+bindsym $mod+Shift+p exec $BROWSER
 bindsym $mod+n exec $TERMINAL -e nvim ~/vimwiki/index.wiki
 bindsym $mod+q kill
-bindsym $mod+d exec --no-startup-id dmenu_run -i
+# bindsym $mod+d exec --no-startup-id dmenu_run -i
+bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym $mod+Shift+s exec maim -s | xclip -selection clipboard -t image/png
 bindsym Print exec maim ~/Pictures/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym Shift+Print exec maim -s ~/Pictures/pic-selected-"$(date '+%y%m%d-%H%M-%S').png"

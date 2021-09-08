@@ -1,4 +1,4 @@
-font pango:Terminus 16
+font pango:Terminus 12
 
 exec xwallpaper --zoom ~/.config/wall
 
@@ -31,7 +31,7 @@ bindsym $mod+Shift+s exec maim -s | xclip -selection clipboard -t image/png
 bindsym Print exec maim ~/Pictures/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym Shift+Print exec maim -s ~/Pictures/pic-selected-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym $mod+v exec mpv "$(xclip -selection clipboard -o)"
-bindsym $mod+m sticky toggle
+bindsym $mod+c sticky toggle
 
 bindsym $mod+p exec mpc toggle
 bindsym $mod+period exec mpc next
@@ -139,6 +139,21 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+mode "mpd" {
+
+    bindsym space exec mpc toggle
+    bindsym period exec mpc next
+    bindsym comma exec mpc prev
+    bindsym Shift+period exec mpc seek +10
+    bindsym Shift+comma exec mpc seek -10
+
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+
+}
+
+bindsym $mod+m mode "mpd"
 
 bar {
         status_command i3blocks

@@ -1,5 +1,5 @@
 alias dot='sudo /usr/bin/git --git-dir=/.dot/ --work-tree=/'
-alias ls='ls --color -F'
+alias ls='ls --color -F --group-directories-first'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias l1='ls -1'

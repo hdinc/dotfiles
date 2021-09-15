@@ -145,8 +145,13 @@ mode "mpd" {
     bindsym space exec mpc toggle
     bindsym period exec mpc next
     bindsym comma exec mpc prev
-    bindsym Shift+period exec mpc seek +10
-    bindsym Shift+comma exec mpc seek -10
+    bindsym k exec mpc seek -10
+    bindsym l exec mpc seek +10
+
+    bindsym Right exec mpc next
+    bindsym Left exec mpc prev
+    bindsym Up exec mpc volume +1
+    bindsym Down exec mpc volume -1
 
     bindsym Escape mode "default"
     bindsym $mod+m mode "default"

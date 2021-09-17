@@ -6,6 +6,10 @@ alias l1='ls -1'
 alias vim='nvim -u NONE -N'
 alias em='emacsclient -t --alternate-editor='''
 
+alias xi='sudo xbps-install'
+alias xq='sudo xbps-query'
+alias xrs='sudo xbps-query -Rs'
+
 PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 
 HISTSIZE=100000

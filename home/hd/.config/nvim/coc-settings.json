@@ -1,7 +1,7 @@
 {
-    "clangd.semanticHighlighting": true,
     "clangd.arguments": ["--background-index","-header-insertion=never"],
     "coc.preferences.formatOnSaveFiletypes": ["cpp","c"],
+    "coc.preferences.semanticTokensHighlights": false,
 
     "languageserver": {
       "haskell": {

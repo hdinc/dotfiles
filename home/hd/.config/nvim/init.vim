@@ -47,15 +47,25 @@ Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tikhomirov/vim-glsl'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'lervag/vimtex'
 Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'bfredl/nvim-ipy'
 Plug 'antoinemadec/coc-fzf'
+Plug 'nvim-treesitter/nvim-treesitter'
 " Plug 'SirVer/ultisnips'
 call plug#end()
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+}
+EOF
 
 let g:nvim_ipy_perform_mappings = 0
 

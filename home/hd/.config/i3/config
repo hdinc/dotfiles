@@ -34,6 +34,7 @@ bindsym Print exec maim ~/Pictures/pic-full-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym Shift+Print exec maim -s ~/Pictures/pic-selected-"$(date '+%y%m%d-%H%M-%S').png"
 bindsym $mod+v exec mpv "$(xclip -selection clipboard -o)"
 bindsym $mod+c sticky toggle
+bindsym $mod+Shift+u exec kbdsw
 
 bindsym $mod+p exec mpc toggle
 bindsym $mod+period exec mpc next

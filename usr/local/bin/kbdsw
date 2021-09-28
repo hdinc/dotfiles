@@ -1,0 +1,15 @@
+#!/bin/bash
+
+layout=$(setxkbmap -query | grep layout | tr -s \ | cut -d\  -f2)
+
+if test "$layout" = "tr"
+then
+    echo "switching to us layout"
+    setxkbmap us
+fi
+
+if test "$layout" = "us"
+then
+    echo "switching to tr layout"
+    setxkbmap tr
+fi

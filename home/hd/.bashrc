@@ -9,6 +9,8 @@ alias em='emacsclient -t --alternate-editor='''
 alias xi='sudo xbps-install'
 alias xq='sudo xbps-query'
 alias xrs='sudo xbps-query -Rs'
+alias xp='sudo xbps-remove -Rf'
+alias xr='sudo xbps-remove'
 
 PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 

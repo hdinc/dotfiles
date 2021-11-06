@@ -1,0 +1,40 @@
+#!/bin/bash
+
+options="\
+    --default-permissions\
+    --allow-other\
+    --read-only\
+    --fast-list\
+    --no-modtime\
+    --use-mmap\
+    --transfers 6\
+    --max-read-ahead 16M\
+    --vfs-cache-mode full\
+    --vfs-cache-max-age 10000h\
+    --vfs-cache-max-size 30G\
+    --vfs-read-chunk-size 1m\
+    --vfs-read-chunk-size-limit 16m\
+    --dir-cache-time 1000h\
+    "
+
+
+if ping -q -c1 google.com &> /dev/null; then
+    echo "internet connection available."
+else
+    echo "internet connection is not available. Exiting.."
+    exit 1;
+fi
+
+if grep -qs '/media/enc ' /proc/mounts; then
+    echo "/media/enc/ is already mounted."
+else
+    echo "/media/enc/ is not mounted. Mounting.."
+    rclone mount drive-v1-enc: /media/enc/ $options --daemon
+fi
+
+if grep -qs '/media/cloud ' /proc/mounts; then
+    echo "/media/cloud/ is already mounted."
+else
+    echo "/media/cloud/ is not mounted. Mounting.."
+    rclone mount drive-v1: /media/cloud/ --exclude "enc/" $options --daemon
+fi

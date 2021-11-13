@@ -11,30 +11,85 @@ options="\
     --max-read-ahead 16M\
     --vfs-cache-mode full\
     --vfs-cache-max-age 10000h\
-    --vfs-cache-max-size 30G\
+    --vfs-cache-max-size 10G\
     --vfs-read-chunk-size 1m\
     --vfs-read-chunk-size-limit 16m\
     --dir-cache-time 1000h\
     "
 
+checkInternet() {
+    ping -q -c1 google.com &> /dev/null
+}
 
-if ping -q -c1 google.com &> /dev/null; then
-    echo "internet connection available."
-else
-    echo "internet connection is not available. Exiting.."
-    exit 1;
-fi
+doMount() {
 
-if grep -qs '/media/enc ' /proc/mounts; then
-    echo "/media/enc/ is already mounted."
-else
-    echo "/media/enc/ is not mounted. Mounting.."
-    rclone mount drive-v1-enc: /media/enc/ $options --daemon
-fi
+    # $1   = rclone config
+    # $2   = mount location
+    # $3.. = extra options
 
-if grep -qs '/media/cloud ' /proc/mounts; then
-    echo "/media/cloud/ is already mounted."
-else
-    echo "/media/cloud/ is not mounted. Mounting.."
-    rclone mount drive-v1: /media/cloud/ --exclude "enc/" $options --daemon
-fi
+    if grep -qs "$2" /proc/mounts; then
+        echo "$2 is already mounted."
+    else
+        echo "$2 is not mounted. Mounting.."
+        rclone mount $@ $options --daemon
+    fi
+}
+
+doUnmount() {
+    if grep -qs "$1" /proc/mounts; then
+        echo "Unmounting $1."
+        fusermount -u $1
+    else
+        echo "$1 is not mounted."
+    fi
+}
+
+mountAll() {
+    doMount drive-v1-enc: /media/gdrive/enc
+    doMount drive-v1: /media/gdrive/root "--exclude enc/"
+    doMount drive-v1: /media/gdrive/shared "--drive-shared-with-me"
+}
+
+unmountAll() {
+    doUnmount /media/gdrive/enc
+    doUnmount /media/gdrive/root
+    doUnmount /media/gdrive/shared
+}
+
+parseArguments() {
+    if [ $# -gt 0 ]; then
+        case $1 in
+            '-i')
+                shift
+                doMount $@
+                exit
+                ;;
+            '-u')
+                unmountAll
+                exit
+                ;;
+            '-w')
+                shift
+                parseArguments
+                until checkInternet; do
+                    if $waitForInternet; then
+                        echo "internet connection is not available. waiting.."
+                        sleep 5
+                    else
+                        echo "internet connection is not available. Exiting.."
+                        exit 1;
+                    fi
+                done
+                echo "internet connection is available."
+                ;;
+            '-s')
+                echo() { :; }
+                shift
+                parseArguments
+        esac
+    else
+        mountAll
+    fi
+}
+
+parseArguments $@

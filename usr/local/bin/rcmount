@@ -18,7 +18,16 @@ options="\
     "
 
 checkInternet() {
-    ping -q -c1 google.com &> /dev/null
+    until ping -q -c1 google.com &> /dev/null ; do
+        if $waitForInternet; then
+            echo "internet connection is not available. waiting.."
+            sleep 5
+        else
+            echo "internet connection is not available. Exiting.."
+            exit 1;
+        fi
+    done
+    echo "internet connection is available."
 }
 
 doMount() {
@@ -60,6 +69,7 @@ parseArguments() {
     if [ $# -gt 0 ]; then
         case $1 in
             '-i')
+                checkInternet
                 shift
                 doMount $@
                 exit
@@ -69,18 +79,9 @@ parseArguments() {
                 exit
                 ;;
             '-w')
+                waitForInternet=true
                 shift
                 parseArguments
-                until checkInternet; do
-                    if $waitForInternet; then
-                        echo "internet connection is not available. waiting.."
-                        sleep 5
-                    else
-                        echo "internet connection is not available. Exiting.."
-                        exit 1;
-                    fi
-                done
-                echo "internet connection is available."
                 ;;
             '-s')
                 echo() { :; }
@@ -88,6 +89,7 @@ parseArguments() {
                 parseArguments
         esac
     else
+        checkInternet
         mountAll
     fi
 }

@@ -20,6 +20,7 @@ set pumheight=10
 set title
 set fdls=99
 set textwidth=80
+set colorcolumn=+1
 " set clipboard=unnamedplus
 
 filetype plugin on
@@ -52,8 +53,10 @@ Plug 'sakhnik/nvim-gdb', { 'do': ':!./install.sh' }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'bfredl/nvim-ipy'
-Plug 'antoinemadec/coc-fzf'
 Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'antoinemadec/coc-fzf'
+
+Plug 'ahmedkhalf/jupyter-nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'SirVer/ultisnips'
 call plug#end()
 
@@ -69,8 +72,22 @@ EOF
 
 let g:nvim_ipy_perform_mappings = 0
 
+lua << EOF
+  require("jupyter-nvim").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
 command RunQtConsole call jobstart("jupyter qtconsole --JupyterWidget.include_other_output=True")
 
+" function! Runcell()
+"     exec "norm \<Plug>(IPy-RunCell)"
+"     call search("^##","W")
+" endfunction
+
+" autocmd FileType python nmap <buffer> <S-CR> :call Runcell()<CR>
 autocmd FileType python nmap <buffer> <S-CR> <Plug>(IPy-RunCell)
 
 autocmd FileType c,cpp setlocal commentstring=//\ %s
@@ -122,7 +139,7 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-nmap <A-q> :qa<CR>
+nmap <silent> <A-q> :qa<CR>
 
 nmap <A-1> 1gt
 nmap <A-2> 2gt
@@ -131,12 +148,17 @@ nmap <A-4> 4gt
 nmap <A-5> 5gt
 nmap <A-w> gT
 nmap <A-e> gt
+
+nmap <silent> <A-s> :bp<CR>
+nmap <silent> <A-d> :bn<CR>
+
 " what is the equivalent of <ctrl-o> in terminal mode?
 autocmd BufWinEnter,WinEnter term://* startinsert
 tmap <A-w> <C-\><C-n>gT
 tmap <A-e> <C-\><C-n>gt
 nmap <A-t> :silent !$TERMINAL&<CR>
 
+nnoremap <silent> U :ea 1f<CR>
 
 noremap <silent> <C-Left> :vertical resize +3<CR>
 noremap <silent> <C-Right> :vertical resize -3<CR>

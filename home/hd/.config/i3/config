@@ -53,15 +53,15 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+h move left 25px
+bindsym $mod+Shift+j move down 25px
+bindsym $mod+Shift+k move up 25px
+bindsym $mod+Shift+l move right 25px
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+Left move left 25px
+bindsym $mod+Shift+Down move down 25px
+bindsym $mod+Shift+Up move up 25px
+bindsym $mod+Shift+Right move right 25px
 
 bindsym $mod+i split h
 bindsym $mod+o split v
@@ -127,15 +127,15 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
 
 mode "resize" {
-        bindsym h       resize shrink width 10 px or 10 ppt
-        bindsym j       resize grow height 10 px or 10 ppt
-        bindsym k         resize shrink height 10 px or 10 ppt
-        bindsym l      resize grow width 10 px or 10 ppt
+        bindsym h       resize shrink width 25 px
+        bindsym j       resize grow height 25 px
+        bindsym k         resize shrink height 25 px
+        bindsym l      resize grow width 25 px
 
-        bindsym Left        resize shrink width 10 px or 10 ppt
-        bindsym Down        resize grow height 10 px or 10 ppt
-        bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+        bindsym Left        resize shrink width 25 px
+        bindsym Down        resize grow height 25 px
+        bindsym Up          resize shrink height 25 px
+        bindsym Right       resize grow width 25 px
 
         bindsym Return mode "default"
         bindsym Escape mode "default"

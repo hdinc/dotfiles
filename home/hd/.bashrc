@@ -4,7 +4,7 @@ alias ll='ls -lh'
 alias la='ls -lAh'
 alias l1='ls -1'
 alias vim='nvim -u NONE -N'
-alias em='emacsclient -t --alternate-editor='''
+alias em='TERM=xterm-24bits emacsclient -t --alternate-editor='''
 
 alias xi='sudo xbps-install'
 alias xq='sudo xbps-query'

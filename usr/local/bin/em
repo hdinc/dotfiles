@@ -1,2 +1,2 @@
 #!/usr/bin/bash
-exec emacsclient -c --alternate-editor='' $@
+exec emacsclient -c --alternate-editor='' "$@"

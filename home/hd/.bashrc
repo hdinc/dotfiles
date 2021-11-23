@@ -19,5 +19,5 @@ shopt -s histappend
 
 source ~/.local/z.sh
 source ~/.local/nnn_quitcd.sh
-source /usr/share/doc/fzf/completion.bash
-source /usr/share/doc/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
+source /usr/share/fzf/key-bindings.bash

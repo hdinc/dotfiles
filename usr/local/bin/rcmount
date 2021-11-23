@@ -4,7 +4,6 @@ options="\
     --default-permissions\
     --allow-other\
     --read-only\
-    --fast-list\
     --no-modtime\
     --use-mmap\
     --transfers 6\
@@ -84,9 +83,13 @@ parseArguments() {
                 parseArguments
                 ;;
             '-s')
-                echo() { :; }
+                echo() { logger --tag rcmount "$@"; }
                 shift
                 parseArguments
+                ;;
+            '-n')
+                mountAll
+                ;;
         esac
     else
         checkInternet

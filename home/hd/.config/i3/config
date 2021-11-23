@@ -2,6 +2,7 @@ font pango:Terminus 12
 
 exec xwallpaper --zoom ~/.config/wall
 exec greenclip daemon > /dev/null
+exec conky
 
 gaps inner 10
 focus_follows_mouse no
@@ -11,6 +12,7 @@ floating_modifier $mod
 #runs after window created?
 for_window [class="Steam"] floating enable
 for_window [class="Pcmanfm"] floating enable
+for_window [class="cpusim"] floating disable
 for_window [title="^Spotify\ Premium$"] move scratchpad
 
 #use marks
@@ -24,6 +26,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+Shift+p exec $BROWSER
+bindsym $mod+slash exec em
 bindsym $mod+n exec $TERMINAL -e nvim ~/vimwiki/index.wiki
 bindsym $mod+q kill
 # bindsym $mod+d exec --no-startup-id dmenu_run -i
@@ -36,6 +39,7 @@ bindsym $mod+v exec mpv "$(xclip -selection clipboard -o)"
 bindsym $mod+c sticky toggle
 bindsym $mod+Shift+u exec kbdsw
 bindsym $mod+Shift+i exec xrandr-invert-colors
+bindsym $mod+semicolon exec nemo
 
 bindsym $mod+p exec mpc toggle
 bindsym $mod+period exec mpc next

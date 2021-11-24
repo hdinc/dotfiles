@@ -4,12 +4,15 @@ map gd cd /media/dev/
 map gm cd /media
 map g/ cd /
 
+set autoquit
+set incsearch
+
 
 # toggle single column view
 cmd no_preview :{{
     set nopreview
     set ratios 1
-    set info size:time
+    # set info size:time
     map ~ yes_preview
 }}
 cmd yes_preview :{{
@@ -18,8 +21,11 @@ cmd yes_preview :{{
     set info
     map ~ no_preview
 }}
+
 map ~ no_preview
 map . set hidden!
+
+no_preview
 
 map W &($TERMINAL;cd $(dirname $f))
 map Y &(echo $f | xclip -selection c)

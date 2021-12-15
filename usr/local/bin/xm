@@ -1,0 +1,6 @@
+#!/bin/bash
+tmp=$(mktemp);
+xbps-query -m > ${tmp};
+pkgs=$(xilog | grep -wf ${tmp});
+rm ${tmp}
+echo "$pkgs"

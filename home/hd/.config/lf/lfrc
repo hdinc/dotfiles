@@ -28,7 +28,7 @@ map . set hidden!
 no_preview
 
 map W &($TERMINAL;cd $(dirname $f))
-map Y &(echo $f | xclip -selection c)
+map Y &(echo -n $f | xclip -selection c)
 
 cmd trash %trash-put $fx
 map x delete

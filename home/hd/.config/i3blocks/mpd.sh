@@ -5,7 +5,8 @@ mpc current;
 printMpd(){
     while true
     do
-        mpc current --wait
+        mpc idle player > /dev/null
+        mpc current
         [ $? -eq 0 ] || { echo ""; sleep 10; }
     done
 }

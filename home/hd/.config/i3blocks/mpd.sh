@@ -26,10 +26,18 @@ do
             mpc next > /dev/null
         ;;
         "4")
-            mpc seek +10 > /dev/null
+            if modstate Shift; then
+                mpc volume +2 > /dev/null
+            else
+                mpc seek +10 > /dev/null
+            fi
         ;;
         "5")
-            mpc seek -10 > /dev/null
+            if modstate Shift; then
+                mpc volume -2 > /dev/null
+            else
+                mpc seek -10 > /dev/null
+            fi
         ;;
     esac
 done

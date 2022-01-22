@@ -15,9 +15,18 @@ xterm*faceSize: 14
 URxvt.font: xft:Cascadia Code:size=14
 URxvt.scrollBar: false
 
-URxvt.perl-ext-common: font-size
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
+URxvt.perl-ext-common: font-size,clipboard
+
 URxvt.keysym.S-M-K: perl:font-size:increase
 URxvt.keysym.S-M-J: perl:font-size:decrease
+
+URxvt.keysym.Control-Meta-c: builtin-string:
+URxvt.keysym.Control-Meta-v: builtin-string:
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
 
 URxvt.keysym.S-Return: \033[13;2u
 URxvt.keysym.C-Return: \033[13;5u

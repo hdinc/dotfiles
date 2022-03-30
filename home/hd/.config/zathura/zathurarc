@@ -1,6 +1,6 @@
 set window-title-basename "true"
 set selection-clipboard "clipboard"
-set font "Terminus 12"
+set font "Fira Code 14"
 set sandbox none
 
 map <C-i> recolor
@@ -58,3 +58,5 @@ set recolor-darkcolor           "#f8f8f2" # Foreground
 #
 set adjust-open width
 #set recolor true
+
+map <C-o> feedkeys ":exec sh -c 'echo $FILE >> $HOME/.cache/zathurahistory' <Return>"

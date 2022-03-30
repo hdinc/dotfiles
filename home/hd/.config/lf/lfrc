@@ -55,4 +55,4 @@ cmd fzf_jump ${{
     fi
     lf -remote "send $id $cmd \"$res\""
 }}
-map <c-f> :fzf_jump
+# map <c-f> :fzf_jump

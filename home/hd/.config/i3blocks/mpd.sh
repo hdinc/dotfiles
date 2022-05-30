@@ -6,7 +6,7 @@ printMpd(){
     while true
     do
         mpc idle player > /dev/null
-        mpc current
+        mpc current -f "[%artist% - %title% - %album%] | [%file%]"
         [ $? -eq 0 ] || { echo ""; sleep 10; }
     done
 }

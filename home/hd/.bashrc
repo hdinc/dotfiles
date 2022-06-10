@@ -14,6 +14,10 @@ alias xr='sudo xbps-remove'
 
 PS1='\[\e]0;\w\a\]\[\e[32m\]\w\[\e[m\] \[\e[34m\]>\[\e[m\] '
 
+if [[ -n "$PROMPT_PREFIX" ]]; then
+    PS1="${PROMPT_PREFIX}${PS1}"
+fi
+
 HISTSIZE=100000
 shopt -s histappend
 

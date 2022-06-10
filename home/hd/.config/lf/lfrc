@@ -34,6 +34,11 @@ cmd trash %trash-put $fx
 map x delete
 map X trash
 
+cmd bash ${{
+    PROMPT_PREFIX=lf\  bash -i
+}}
+map w :bash
+
 
 # todo: write a seperate extract script
 cmd extract ${{

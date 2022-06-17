@@ -1,0 +1,10 @@
+UUID=a64728f1-4cf2-4ad5-8af2-0920bac1deb7 / btrfs subvol=void 0 1
+UUID=a64728f1-4cf2-4ad5-8af2-0920bac1deb7 /home btrfs subvol=home 0 2
+UUID=9DBD-85C2 /boot vfat defaults 0 2
+
+UUID=a64728f1-4cf2-4ad5-8af2-0920bac1deb7 /swap btrfs subvol=swap 0 0
+/swap/swapfile none swap sw 0 0
+tmpfs /tmp tmpfs defaults,nosuid,nodev,size=6g 0 2
+
+UUID=a4eff987-b83b-4bb5-8d9c-3607827dab41 /media/hard ext4 defaults 0 2
+UUID=16AAA6C05E4D3DDF /media/win ntfs defaults 0 2

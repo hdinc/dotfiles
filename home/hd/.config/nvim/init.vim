@@ -22,6 +22,7 @@ set fdls=99
 set textwidth=80
 set colorcolumn=+1
 " set clipboard=unnamedplus
+set wildmode=longest:full,full
 
 filetype plugin on
 syntax on
@@ -54,15 +55,26 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/tagbar'
 Plug 'bfredl/nvim-ipy'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'honza/vim-snippets'
+Plug 'jiangmiao/auto-pairs'
+Plug 'troydm/zoomwintab.vim'
+Plug 'SmiteshP/nvim-gps'
+Plug 'lewis6991/nvim-treesitter-context'
 " Plug 'antoinemadec/coc-fzf'
 
 Plug 'ahmedkhalf/jupyter-nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'SirVer/ultisnips'
 call plug#end()
 
+
+lua require("nvim-gps").setup({disable_icons = true})
+
+let g:zoomwintab_remap = 0
+nmap <C-space> :ZoomWinTabToggle<CR>
+
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = true,
@@ -109,16 +121,22 @@ function! CocFuncName()
     return currentFunctionSymbol !=# '' ? "" .currentFunctionSymbol : ''
 endfunction
 
+func! NvimGps() abort
+	return luaeval("require'nvim-gps'.is_available()") ?
+		\ luaeval("require'nvim-gps'.get_location()") : ''
+endf
+
 let g:lightline ={
             \'colorscheme':'onedark',
             \'component_function': {
             \   'cocstatus': 'coc#status',
-            \   'currentFunc': 'CocFuncName'
+            \   'currentFunc': 'CocFuncName',
+            \   'gps': 'NvimGps'
             \},
             \'active': {
             \   'left': [ [ 'mode', 'paste', ],
             \           [ 'readonly', 'relativepath', 'modified' ],
-            \           [ 'cocstatus', 'currentFunc' ] ],
+            \           [ 'cocstatus', 'gps' ] ],
             \},
             \'tab_component_function': {
             \   'tabnum': '',
@@ -151,6 +169,8 @@ nmap <A-e> gt
 
 nmap <silent> <A-s> :bp<CR>
 nmap <silent> <A-d> :bn<CR>
+
+nmap <silent> <A-u> `[v`]~
 
 " what is the equivalent of <ctrl-o> in terminal mode?
 autocmd BufWinEnter,WinEnter term://* startinsert
@@ -188,9 +208,12 @@ map <Leader>tk <C-w>t<C-w>K
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " Removes pipes | that act as seperators on splits
-" set fillchars+=vert:\ 
+" set fillchars+=vert:\
 
 " ----------------coc config-------------"
+
+let g:coc_default_semantic_highlight_groups = 1
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -221,11 +244,27 @@ set shortmess+=c
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+
 
 " inoremap <silent><expr> <TAB>
 "   \ pumvisible() ? coc#_select_confirm() :
@@ -234,12 +273,12 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 "   \ <SID>check_back_space() ? "\<TAB>" :
 "   \ coc#refresh()
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_next = '<tab>'
 
 " Use <c-space> to trigger completion.
 if has('nvim')
@@ -357,3 +396,18 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+au BufWinEnter * match ExtraWhitespace /\s\+$/
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+au BufWinLeave * call clearmatches()
+
+" set statusline+=%{gutentags#statusline()}
+" set tags=./tags;
+" let g:gutentags_ctags_exclude_wildignore = 1
+" let g:gutentags_ctags_exclude = [
+"   \'node_modules', '_build', 'build', 'CMakeFiles', '.mypy_cache', 'venv',
+"   \'*.md', '*.tex', '*.css', '*.html', '*.json', '*.xml', '*.xmls', '*.ui']
+

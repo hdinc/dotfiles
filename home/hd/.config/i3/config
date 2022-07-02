@@ -150,27 +150,71 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
-
-mode "mpd" {
-
-    bindsym space exec mpc toggle
-    bindsym period exec mpc next
-    bindsym comma exec mpc prev
-    bindsym k exec mpc seek -10
-    bindsym l exec mpc seek +10
-
-    bindsym Right exec mpc next
-    bindsym Left exec mpc prev
-    bindsym Up exec mpc volume +1
-    bindsym Down exec mpc volume -1
-
+mode "workspace" {
     bindsym Escape mode "default"
-    bindsym $mod+m mode "default"
 
+    bindsym a workspace number 11; mode "default"
+    bindsym b workspace number 12; mode "default"
+    bindsym c workspace number 13; mode "default"
+    bindsym d workspace number 14; mode "default"
+    bindsym e workspace number 15; mode "default"
+    bindsym f workspace number 16; mode "default"
+    bindsym g workspace number 17; mode "default"
+    bindsym h workspace number 18; mode "default"
+    bindsym i workspace number 19; mode "default"
+    bindsym j workspace number 20; mode "default"
+    bindsym k workspace number 21; mode "default"
+    bindsym l workspace number 22; mode "default"
+    bindsym m workspace number 23; mode "default"
+    bindsym n workspace number 24; mode "default"
+    bindsym o workspace number 25; mode "default"
+    bindsym p workspace number 26; mode "default"
+    bindsym q workspace number 27; mode "default"
+    bindsym r workspace number 28; mode "default"
+    bindsym s workspace number 29; mode "default"
+    bindsym t workspace number 30; mode "default"
+    bindsym u workspace number 31; mode "default"
+    bindsym v workspace number 32; mode "default"
+    bindsym w workspace number 33; mode "default"
+    bindsym x workspace number 34; mode "default"
+    bindsym y workspace number 35; mode "default"
+    bindsym z workspace number 36; mode "default"
 }
 
-bindsym $mod+m mode "mpd"
+bindsym $mod+backslash exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+
+bindsym $mod+t mode "workspace"
+
+bindsym $mod+r mode "resize"
+
+# mode "mpd" {
+# 
+#     bindsym space exec mpc toggle
+#     bindsym period exec mpc next
+#     bindsym comma exec mpc prev
+#     bindsym k exec mpc seek -10
+#     bindsym l exec mpc seek +10
+# 
+#     bindsym Right exec mpc next
+#     bindsym Left exec mpc prev
+#     bindsym Up exec mpc volume +1
+#     bindsym Down exec mpc volume -1
+# 
+#     bindsym Escape mode "default"
+#     bindsym $mod+m mode "default"
+# 
+# }
+# 
+# bindsym $mod+m mode "mpd"
+
+# read 1 character and mark the current window with this character
+bindsym $mod+x exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
+
+# read 1 character and go to the window with the character
+bindsym $mod+m exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+bindsym $mod+F12 workspace conky
+bindsym --release $mod+F12 workspace back_and_forth
 
 bar {
         status_command i3blocks

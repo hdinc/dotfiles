@@ -1,5 +1,6 @@
 configuration {
     modi: "window,drun,ssh,combi,run";
+    show-icons: true;
 }
 
 @theme "onedark"

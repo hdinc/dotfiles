@@ -1,6 +1,7 @@
 map gb cd /media/backup/
 map ge cd /media/hard/
 map gd cd /media/dev/
+map gD cd ~/Downloads/
 map gm cd /media
 map g/ cd /
 

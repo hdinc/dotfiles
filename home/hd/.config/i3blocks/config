@@ -35,7 +35,7 @@ DECIMALS=1
 
 [temperature]
 command=~/.config/i3blocks/temperature/temperature
-interval=10
+interval=5
 #T_WARN=70
 #T_CRIT=90
 SENSOR_CHIP="coretemp-isa-0000"

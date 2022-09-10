@@ -439,7 +439,7 @@ xdotool
 xe
 xev
 xeyes
-xf86-input-synaptics
+xf86-input-mtrack
 xhost
 xinput
 xkill

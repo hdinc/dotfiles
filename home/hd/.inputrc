@@ -1,3 +1,5 @@
 set completion-ignore-case On
 
 "\e\t": menu-complete
+
+";5u": ' | less \015'

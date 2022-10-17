@@ -2,8 +2,10 @@
 separator=true
 separator_block_width=15
 
+#command=./mpd.sh 2> /dev/null
+# TODO: pango markup
 [mpd]
-command=./mpd.sh 2> /dev/null
+command=./mpdstatus
 interval=persist
 color=#11e412
 

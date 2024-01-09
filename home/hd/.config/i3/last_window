@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# vim: set filetype=python:
+
+":" '''\'
+
+DIR="$( cd "$( dirname "$( realpath "${BASH_SOURCE[0]}" )" )" >/dev/null && pwd )"
+
+"$DIR"/.env/bin/python "$0" "$@" &
+disown -a
+
+exit 0
+
+":" '\'' '''
+
+from i3ipc import Connection, Event
+
+i3 = Connection(auto_reconnect=True)
+
+last = None
+
+
+def on_window_focus(i3, e):
+    global last
+
+    if last is not None:
+        i3.command('[id=%s] mark _last' % last)
+
+    last = hex(i3.get_tree().find_focused().window)
+
+
+i3.on(Event.WINDOW_FOCUS, on_window_focus)
+
+i3.main()
